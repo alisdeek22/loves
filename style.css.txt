@@ -1,0 +1,268 @@
+:root {
+  --primary-color: #ff3366; /* لون أحمر نيون ساطع */
+  --accent-color: #ff99aa; /* لون فاتح للغلاف */
+  --text-color: #424242;
+  --shadow-color: rgba(0, 0, 0, 0.4); /* ظل أغمق للـ 3D */
+  --neon-glow-color: #ff3366; /* لون الوهج النيون */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #1a0033; /* خلفية داكنة جداً للنيون */
+  font-family: "Cairo", sans-serif;
+  perspective: 1000px; /* للـ 3D في Body */
+  overflow: hidden; /* لإخفاء أي قلوب تخرج عن الشاشة */
+}
+
+.envelope-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-style: preserve-3d; /* مهم لعناصر الظرف */
+  transform: rotateX(10deg) rotateY(-10deg); /* إمالة خفيفة للغلاف */
+  transition: transform 1s ease-in-out;
+}
+
+/* -------------------- تصميم الغلاف (الظرف) -------------------- */
+.envelope {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  background-color: var(--accent-color);
+  box-shadow:
+    0 15px 40px var(--shadow-color),
+    /* ظل أقوى */ 0 0 20px var(--neon-glow-color); /* وهج نيون للظرف */
+  z-index: 20;
+  cursor: pointer;
+  transition:
+    transform 1s ease-in-out,
+    box-shadow 0.5s ease;
+  border-radius: 8px;
+  transform-style: preserve-3d;
+}
+
+/* القلب الذي يغطي الرسالة - نيون أكثر */
+.heart {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: var(--primary-color);
+  transform: rotate(-45deg);
+  top: 50px;
+  left: 110px;
+  box-shadow:
+    0 0 10px var(--neon-glow-color),
+    0 0 30px var(--neon-glow-color),
+    0 0 60px var(--neon-glow-color); /* وهج نيون قوي */
+  z-index: 25;
+  border-radius: 5px;
+  transition:
+    opacity 0.5s ease-in-out,
+    transform 0.5s ease-in-out;
+}
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  box-shadow: inherit; /* وراثة الوهج النيون */
+}
+.heart::before {
+  top: -50%;
+  left: 0;
+}
+.heart::after {
+  top: 0;
+  right: -50%;
+}
+
+/* الغطاء العلوي للظرف - 3D ونيون */
+.flap {
+  position: absolute;
+  border-style: solid;
+  z-index: 30;
+  width: 0;
+  height: 0;
+}
+.flap.top {
+  border-width: 100px 150px 0 150px;
+  border-color: var(--primary-color) transparent transparent transparent;
+  top: -5px;
+  left: 0;
+  transform-origin: top;
+  transition:
+    transform 1s ease-in-out,
+    border-color 0.5s ease;
+  box-shadow:
+    0 -5px 15px rgba(0, 0, 0, 0.3),
+    /* ظل للغطاء */ 0 0 10px var(--neon-glow-color); /* وهج نيون */
+}
+/* الغطاء الخلفي */
+.flap.back {
+  border-width: 0 150px 100px 150px;
+  border-color: transparent transparent var(--primary-color) transparent;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 0 10px var(--neon-glow-color); /* وهج نيون */
+}
+
+/* -------------------- البطاقة الداخلية -------------------- */
+.card {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow:
+    0 0 15px var(--shadow-color),
+    0 0 15px var(--neon-glow-color); /* وهج نيون للرسالة */
+  z-index: 20;
+  opacity: 0;
+  top: 20px;
+  transition: all 1s ease-in-out;
+  transform: translateY(0) rotateX(0deg);
+  text-align: center;
+  color: var(--text-color);
+}
+.card h2 {
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--neon-glow-color);
+}
+.card .signature {
+  font-style: italic;
+  font-weight: bold;
+  margin-top: 15px;
+  text-shadow: 0 0 3px var(--neon-glow-color);
+}
+
+/* -------------------- الزر - نيون -------------------- */
+.open-btn {
+  padding: 12px 25px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 50px; /* مسافة أكبر */
+  box-shadow:
+    0 0 15px var(--neon-glow-color),
+    0 5px 20px rgba(255, 0, 0, 0.6); /* ظل ووهج نيون */
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  font-weight: bold;
+}
+.open-btn:hover {
+  background-color: #ff4d4d;
+  transform: scale(1.05);
+}
+
+/* -------------------- حالة الفتح (CSS Classes Added by JS) -------------------- */
+.envelope.open .flap.top {
+  transform: rotateX(180deg) translateZ(50px); /* يفتح ويتحرك للأمام قليلاً */
+  z-index: 10;
+  border-color: var(--neon-glow-color) transparent transparent transparent; /* يتغير لون الغطاء */
+  box-shadow: 0 0 20px var(--neon-glow-color);
+}
+
+.envelope.open .heart {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0); /* يصغر ويختفي */
+  visibility: hidden;
+}
+
+.envelope.open + .card {
+  opacity: 1;
+  transform: translateY(-200px) rotateX(0deg); /* تظهر وتصعد أكثر */
+  z-index: 20;
+  box-shadow:
+    0 0 25px var(--shadow-color),
+    0 0 30px var(--neon-glow-color);
+}
+
+.open-btn.hidden {
+  display: none;
+}
+
+/* -------------------- القلوب المتطايرة -------------------- */
+.heart-particle {
+  position: absolute;
+  background-color: var(--primary-color);
+  width: 20px;
+  height: 20px;
+  transform: rotate(-45deg);
+  opacity: 0;
+  animation: floatHeart 4s forwards ease-out;
+  z-index: 50; /* فوق كل شيء */
+  box-shadow:
+    0 0 5px var(--neon-glow-color),
+    0 0 15px var(--neon-glow-color);
+}
+.heart-particle::before,
+.heart-particle::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  box-shadow: inherit;
+}
+.heart-particle::before {
+  top: -50%;
+  left: 0;
+}
+.heart-particle::after {
+  top: 0;
+  right: -50%;
+}
+
+@keyframes floatHeart {
+  0% {
+    opacity: 0;
+    transform: translateY(0px) rotate(-45deg) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-400px) rotate(-45deg) scale(1.2);
+    filter: blur(2px);
+  }
+}
+body {
+  /* يجب أن يكون الخط في البداية لكي يطبَّق على كل شيء */
+  font-family: "Cairo", sans-serif;
+  /* ... الخصائص الأخرى تأتي بعدها ... */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* ... إلخ ... */
+}
+.ios-emoji {
+  width: 1.2em; /* حجم مناسب لحجم الخط */
+  height: 1.2em;
+  vertical-align: middle; /* لمحاذاة الإيموجي مع النص */
+  margin-right: 5px;
+}
+/* هذا هو شكل القلب المتطاير حالياً */
+.heart-particle {
+  /* ... الأبعاد، اللون، النيون ... */
+  transform: rotate(-45deg); /* شكل المربع المائل الذي يشكل القلب */
+  /* ... */
+}
+.heart-particle::before,
+.heart-particle::after {
+  /* ... الأقواس الدائرية التي تكمل شكل القلب ... */
+}

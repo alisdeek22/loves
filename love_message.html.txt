@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+    <div class="envelope-container">
+        <div class="envelope">
+            <div class="flap top"></div>
+            <div class="flap back"></div>
+            <div class="heart"></div>
+        </div>
+
+        <div class="card">
+            <h2>الى روجا حبيبت قلبي
+            </h2>
+            <p>
+         ربنا يديمكك فحياتي
+      
+            </p>
+            <p class="signature">من لولي</p>
+        </div>
+        
+        <button id="openButton" class="open-btn">
+    
+          
+        </button>
+    </div>
+
+    <div class="heart-particles-container"></div> 
+
+    <script src="script.js"></script>
+    
