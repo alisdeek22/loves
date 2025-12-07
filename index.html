@@ -1,0 +1,265 @@
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+    
+
+
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- ==================== ENVELOPE PAGE ==================== -->
+    <div class="page active" id="envelopePage">
+        <h1 class="envelope-title">لديك رسالة خاصة 💌</h1>
+        
+        <div class="envelope-wrapper">
+            <div class="envelope" id="envelope" onclick="openEnvelope()">
+                <div class="envelope-back"></div>
+                <div class="letter">
+                    <div class="letter-heart">❤</div>
+                    <p class="letter-text" id="letterText">أنتِ نور عيني وسبب سعادتي... كل يوم معكِ هو نعمة من السماء. أحبكِ للأبد 💕</p>
+                    <div class="letter-signature">~ مع حبي ~</div>
+                </div>
+                <div class="envelope-flap"></div>
+                <div class="envelope-front"></div>
+                <div class="heart-seal">
+                    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                </div>
+            </div>
+        </div>
+        
+        <p class="envelope-hint" id="envelopeHint">✨ اضغط على الظرف لفتحه ✨</p>
+        
+        <button class="btn-love hidden" id="continueBtn" onclick="goToPassword()">
+            <span>ادخل لعالمنا</span>
+            <span>❤</span>
+        </button>
+    </div>
+
+    <!-- ==================== PASSWORD PAGE ==================== -->
+    <div class="page" id="passwordPage">
+        <div class="password-card" id="passwordCard">
+            <div class="password-content">
+                <div class="password-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h2 class="password-title">مكان خاص بينا 💕</h2>
+                <p class="password-subtitle">أدخل كلمة السر للدخول</p>
+                
+                <form onsubmit="checkPassword(event)">
+                    <input type="password" class="input-love" id="passwordInput" placeholder="••••" maxlength="10" autofocus>
+                    <p class="error-text hidden" id="passwordError">كلمة السر غير صحيحة 💔</p>
+                    
+                    <button type="submit" class="btn-love" style="width: 100%; margin-top: 1rem;">
+                        <span>❤</span>
+                        <span>دخول</span>
+                    </button>
+                </form>
+                
+                <div class="password-hearts">
+                    <span>❤</span><span>❤</span><span>❤</span><span>❤</span><span>❤</span>
+                </div>
+                <p class="password-hint">💡 تلميح: كلمة السر هي 1234</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN PAGE ==================== -->
+    <div class="page main-page" id="mainPage">
+        <div class="main-content fade-in" id="homeContent">
+            <!-- Welcome -->
+            <div class="welcome-section">
+                <div class="welcome-hearts">
+                    <span class="heartbeat">❤</span>
+                    <h1 class="welcome-title">أهلاً حبيبي</h1>
+                    <span class="heartbeat">❤</span>
+                </div>
+                <p class="welcome-subtitle">مكاننا الخاص 💕</p>
+            </div>
+
+            <!-- Counter -->
+            <div class="counter-box">
+                <div class="counter-header">
+                    <span class="heartbeat">❤</span>
+                    <h3>معاً منذ</h3>
+                    <span class="heartbeat">❤</span>
+                </div>
+                <div class="counter-grid">
+                    <div class="counter-item">
+                        <div class="counter-number" id="counterDays">0</div>
+                        <div class="counter-label">يوم</div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number" id="counterHours">0</div>
+                        <div class="counter-label">ساعة</div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number" id="counterMinutes">0</div>
+                        <div class="counter-label">دقيقة</div>
+                    </div>
+                    <div class="counter-item">
+                        <div class="counter-number" id="counterSeconds">0</div>
+                        <div class="counter-label">ثانية</div>
+                    </div>
+                </div>
+                <div class="counter-date">
+                    <span>📅</span>
+                    <span id="startDateText">١ يناير ٢٠٢٤</span>
+                </div>
+            </div>
+
+            <!-- Quote -->
+            <div class="quote-card">
+                <div class="quote-header">
+                    <span class="sparkle">✨</span>
+                    <span style="color: var(--muted-foreground); font-size: 0.85rem;">كلمة اليوم</span>
+                    <span class="sparkle" style="animation-delay: 0.5s;">✨</span>
+                </div>
+                <p class="quote-text" id="dailyQuote">أنتِ لست فقط حبي، أنتِ حياتي كلها ❤️</p>
+            </div>
+
+            <!-- Photos Preview -->
+            <div>
+                <div class="section-header">
+                    <h3 class="section-title"><span>📸</span> صورنا</h3>
+                    <a class="section-link" onclick="showPage('photos')">عرض الكل ←</a>
+                </div>
+                <div class="photo-grid" id="photoPreview"></div>
+            </div>
+
+            <!-- Memory Preview -->
+            <div>
+                <div class="section-header">
+                    <h3 class="section-title"><span>💕</span> ذكرياتنا</h3>
+                    <a class="section-link" onclick="showPage('memories')">عرض الكل ←</a>
+                </div>
+                <div class="memory-card" onclick="showPage('memories')">
+                    <p class="memory-date" id="firstMemoryDate">١ يناير ٢٠٢٤</p>
+                    <h4 class="memory-title" id="firstMemoryTitle">أول لقاء ✨</h4>
+                    <p class="memory-desc" id="firstMemoryDesc">اليوم الذي التقينا فيه لأول مرة...</p>
+                </div>
+            </div>
+
+            <!-- Love Notes Button -->
+            <div class="love-notes-btn" onclick="showPage('love-notes')">
+                <h4><span>💬</span> كلام من القلب</h4>
+                <p>اضغط لقراءة المزيد من رسائل الحب 💕</p>
+            </div>
+
+            <!-- Final Quote -->
+            <div class="final-quote">
+                <p id="mainLoveMessage">"أنتِ نور عيني وسبب سعادتي... كل يوم معكِ هو نعمة من السماء. أحبكِ للأبد 💕"</p>
+                <div class="hearts">
+                    <span>❤</span><span>❤</span><span>❤</span><span>❤</span><span>❤</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Photos Full Page -->
+        <div class="photos-page main-content" id="photosContent">
+            <div class="page-title">
+                <h2><span>📸</span> صورنا معاً</h2>
+                <p>لحظات محفورة في القلب</p>
+            </div>
+            <div class="full-photo-grid" id="fullPhotoGrid"></div>
+        </div>
+
+        <!-- Memories Full Page -->
+        <div class="memories-page main-content" id="memoriesContent">
+            <div class="page-title">
+                <h2><span>💕</span> ذكرياتنا معاً</h2>
+                <p>لحظات لا تُنسى</p>
+            </div>
+            <div class="timeline" id="memoriesTimeline"></div>
+        </div>
+
+        <!-- Love Notes Page -->
+        <div class="love-notes-page main-content" id="loveNotesContent">
+            <div class="page-title">
+                <h2><span>💬</span> كلام من القلب</h2>
+                <p>رسائل حب لا تنتهي</p>
+            </div>
+            <div class="love-notes-list" id="loveNotesList"></div>
+            <div class="personal-message">
+                <h3><span>❤</span> رسالتي لك</h3>
+                <p>كل يوم أقضيه معك هو هدية. أنت لست فقط شريك حياتي، أنت صديقي ورفيق دربي وكل شيء جميل في هذا العالم. شكراً لأنك أنت، شكراً لأنك معي، شكراً لأنك تحبني. أحبك أكثر من أي شيء. 💕</p>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div class="settings-page main-content" id="settingsContent">
+            <div class="page-title">
+                <h2><span>⚙️</span> الإعدادات</h2>
+                <p>خصص موقعك الخاص</p>
+            </div>
+            <form class="settings-form" onsubmit="saveSettings(event)">
+                <div class="form-group">
+                    <label><span>🎵</span> رابط الأغنية</label>
+                    <input type="url" id="settingSongUrl" placeholder="https://example.com/song.mp3" dir="ltr">
+                    <small>أدخل رابط ملف MP3 للأغنية</small>
+                </div>
+                <div class="form-group">
+                    <label><span>📅</span> تاريخ البداية</label>
+                    <input type="date" id="settingStartDate">
+                    <small>التاريخ الذي بدأت فيه علاقتكما</small>
+                </div>
+                <div class="form-group">
+                    <label><span>💌</span> رسالة الحب</label>
+                    <textarea id="settingMessage" placeholder="اكتب رسالة حب جميلة..."></textarea>
+                    <small>الرسالة التي ستظهر في الظرف</small>
+                </div>
+                <button type="submit" class="save-btn" id="saveBtn">
+                    <span>💾</span>
+                    <span>حفظ الإعدادات</span>
+                </button>
+            </form>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <button class="nav-item active" data-page="home" onclick="showPage('home')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span>الرئيسية</span>
+                </button>
+                <button class="nav-item" data-page="photos" onclick="showPage('photos')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    <span>الصور</span>
+                </button>
+                <button class="nav-item" data-page="love-notes" onclick="showPage('love-notes')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span>كلام حب</span>
+                </button>
+                <button class="nav-item" data-page="memories" onclick="showPage('memories')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M12 6l-2 6h4l-2 6"/></svg>
+                    <span>الذكريات</span>
+                </button>
+                <button class="nav-item" data-page="settings" onclick="showPage('settings')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span>إعدادات</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Music Player -->
+        <button class="music-player" id="musicPlayer" onclick="toggleMusic()">
+            <svg id="playIcon" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <audio id="audioPlayer" loop></audio>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-prev" onclick="prevPhoto()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <img id="lightboxImage" src="" alt="">
+        <button class="lightbox-nav lightbox-next" onclick="nextPhoto()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
