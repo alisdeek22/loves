@@ -1,106 +1,0 @@
-<link rel="stylesheet" href="styles.css">
-<script src="script.js" defer></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Tajawal:wght@400;500;700&family=Amiri&family=Great+Vibes&display=swap" rel="stylesheet"/>
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  
-  
-
-
-
-  <!-- توقيع المصمم -->
-  <div class="designer-banner">
-    <span class="left">For Rojaaa 💕</span>
-    <span class="right"> Loly ✨</span>
-  </div>
-
-  <!-- حاوية الثلج -->
-  <div id="snow-container"></div>
-
-  <!-- ========== صفحة الباسورد ========== -->
-  <div class="page active" id="page-password">
-    <div class="password-box">
-      <div class="christmas-lights">
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-      </div>
-      <h2>Enter Password 💌</h2>
-      <input type="password" id="password" placeholder="Enter your secret..."/>
-      <p class="error-msg" id="error-msg">Wrong password! Try again 😅</p>
-      <button onclick="checkPassword()">Unlock 💕</button>
-    </div>
-  </div>
-
-  <!-- ========== صفحة الرسالة ========== -->
-  <div class="page" id="page-letter">
-    <div id="flower-section">
-      <p class="click-text">دوسي على الوردة</p>
-      <div class="flower-btn" onclick="showLetter()">🌸</div>
-    </div>
-    
-    <div class="letter-box" id="letter-box" style="display: none;">
-      <div class="christmas-lights">
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-      </div>
-      <p class="letter-text">
-        انا عمري ما حبيت حد زي ما حبيتك ولا كان في روچاا،
-مش عارف أبدأ منين بس حاسس إن وجودك في حياتي فرق معايا أكتر ما كنت متخيل. إنتي مش مجرد حد بحبه وخلاص، إنتي راحة، وإنتي أمان، وإحساس حلو بييجي من غير مجهود. وجودك جنبي بيخليني أهدى، أرتب دماغي، وأبقى أحسن من غير ما تحاولي تعملي حاجة.
-
-بحبك عشان على طبيعتك، بعفويتك، بطريقتك اللي بتدخل القلب من غير استئذان. بحب إنك دايمًا فاهمة، وبتعرفي تسمعي، وبتحسي قبل ما أتكلم. في وقت كتير ببقى متلخبط أو ساكت، وإنتي بتفهمي السكوت قبل الكلام، وده لوحده نعمة.
-
-ممتن ليكي على كل لحظة كنتي فيها جنبي، على الضحكة، على الدعم، على إنك موجودة حتى في الأيام اللي مكنتش خفيف فيها. بحترمك وبقدّرك وبشوف فيكي حاجة كبيرة، حاجة تخليني فخور إنك في حياتي.
-
-يمكن مش دايمًا بعرف أعبّر صح، بس صدقيني إحساسي ناحيتك حقيقي، ووجودك فرق معايا بجد. بحبك مش عشان حاجة معينة، بحبك عشان انتي روچاا… وده كفاية ❤️
-      </p>
-      <button class="next-btn" onclick="goToPage('page-memories')">Next 💕</button>
-    </div>
-  </div>
-
-  <!-- ========== صفحة الذكريات ========== -->
-  <div class="page" id="page-memories">
-    <h1 class="memories-title">Our Memories 🎀</h1>
-    
-    <div class="music-card">
-      <iframe src="https://www.youtube.com/embed/Ki-lHWnHv8E" title="Our Song" allowfullscreen></iframe>
-    </div>
-    
-    <div class="carousel-container">
-      <img id="carousel-img" src="https://i.ibb.co/DfK58MRM/Whats-App-Image-2025-12-06-at-20-45-05-ffec2ac0.jpg" alt="Memory"/>
-    </div>
-    
-    <div class="carousel-dots" id="carousel-dots"></div>
-    
-    <div class="timer" id="love-timer"></div>
-    
-    <button class="next-btn" onclick="goToPage('page-ending')">Next 🎀</button>
-  </div>
-
-  <!-- ========== صفحة النهاية ========== -->
-  <div class="page" id="page-ending">
-    <div class="ending-content">
-      <h1 class="ending-title" id="line1">روچاا حبيبتي 🎀</h1>
-      <p class="ending-line" id="line2">مهما الدنيا ودتنا فين...</p>
-      <p class="ending-line" id="line3">هتفضلي إنتي أغلى حد عندي،</p>
-      <p class="ending-line" id="line4">أماني وبيتي اللي برتاح فيه 🎀</p>
-      <button class="replay-btn" id="replay-btn" onclick="replay()">إعادة 🎀</button>
-      <p class="designer-footer" id="designer-footer">Designed with ❤️ by Loly</p>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
